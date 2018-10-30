@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>echarts练习</title>
+	<script src="echarts.js"></script>
+</head>
+<body>
+	<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="width: 600px;height:400px;"></div>
+    <script type="text/javascript">
+		//可以动态的为echarts容器指定大小，但是要在echarts实例化之前，指定好容器的尺寸才不会出错
+		
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+
+        // 指定图表的配置项和数据
+        var option = {
+            title: {
+                text: 'ECharts 入门示例'
+            },
+            textStyle: {
+		        color: 'rgba(255, 255, 255, 1)'
+		    },
+		    backgroundColor: '#2c343c',
+            tooltip: {},
+            legend: {
+                data:['销量']
+            },
+            xAxis: {
+                data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
+            },
+            yAxis: {
+
+            },
+            series: [{
+                name: '销量',
+                type: 'bar',
+                data: [5, 20, 36, 10, 10, 20]
+            }]
+            
+        };
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    </script>
+</body>
+</html>
+
+
+<!-- $.get('data/asset/data/life-expectancy-table.json', function (data) {
+
+    var sizeValue = '57%';
+    var symbolSize = 2.5;
+    option = {
+        legend: {},
+        tooltip: {},
+        toolbox: {
+            left: 'center',
+            feature: {
+                dataZoom: {}
+            }
+        },
+        /*四个图标的位置定义*/
+        grid: [
+            /*第一个图表位置距右57%，距下57%*/
+            {right: sizeValue, bottom: sizeValue},
+            /*第二个图表位置距左57%，距下57%*/
+            {left: sizeValue, bottom: sizeValue},
+            /*第三个图表位置距右57%，距上57%*/
+            {right: sizeValue, top: sizeValue},
+            /*第一个图表位置距左57%，距下57%*/
+            {left: sizeValue, top: sizeValue}
+        ],
+        xAxis: [
+            /*axisLabel: {rotate: 50, interval: 0}此段代码作用是使维度倾斜*/
+            {type: 'value', gridIndex: 0, name: 'Income', axisLabel: {rotate: 50, interval: 0}},
+            /*type: 'category'维度类型为时间类型*/
+            {type: 'category', gridIndex: 1, name: 'Country', boundaryGap: false, axisLabel: {rotate: 50, interval: 0}},
+            {type: 'value', gridIndex: 2, name: 'Income', axisLabel: {rotate: 50, interval: 0}},
+            {type: 'value', gridIndex: 3, name: 'Life Expectancy', axisLabel: {rotate: 50, interval: 0}}
+        ],
+        yAxis: [
+            {type: 'value', gridIndex: 0, name: 'Life Expectancy'},
+            {type: 'value', gridIndex: 1, name: 'Income'},
+            {type: 'value', gridIndex: 2, name: 'Population'},
+            {type: 'value', gridIndex: 3, name: 'Population'}
+        ],
+        dataset: {
+            /*维度的设置*/
+            dimensions: [
+                'Income',
+                'Life Expectancy',
+                'Population',
+                'Country',
+                {name: 'Year', type: 'ordinal'}
+            ],
+            /*图表的数据*/
+            source: data
+        },
+        /*多少个系列就有多少个图表*/
+        series: [
+            /*第一个图表的相关配置映射*/
+            {
+                type: 'scatter',
+                symbolSize: symbolSize,
+                xAxisIndex: 0,
+                yAxisIndex: 0,
+                encode: {
+                    x: 'Income',
+                    y: 'Life Expectancy',
+                    tooltip: [0, 1, 2, 3, 4]
+                }
+            },
+            {
+                type: 'scatter',
+                symbolSize: symbolSize,
+                xAxisIndex: 1,
+                yAxisIndex: 1,
+                encode: {
+                    x: 'Country',
+                    y: 'Income',
+                    /*鼠标移上的黑框，提示框，是显示数据的列数*/
+                    tooltip: [0, 1, 2, 3, 4]
+                }
+            },
+            {
+                type: 'scatter',
+                symbolSize: symbolSize,
+                xAxisIndex: 2,
+                yAxisIndex: 2,
+                encode: {
+                    x: 'Income',
+                    y: 'Population',
+                    tooltip: [0, 1, 2, 3, 4]
+                }
+            },
+            {
+                type: 'scatter',
+                symbolSize: symbolSize,
+                xAxisIndex: 3,
+                yAxisIndex: 3,
+                encode: {
+                    x: 'Life Expectancy',
+                    y: 'Population',
+                    tooltip: [0, 1, 2, 3, 4]
+                }
+            }
+        ]
+    };
+
+    /*渲染出配置的图表*/
+    myChart.setOption(option);
+}); -->
